@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Panda Library</string>
+    <string name="titlePreview">Заголовок</string>
+    <string name="genrePreview">Жанр:</string>
+    <string name="seriesPreview">Серия:</string>
+    <string name="languagePreview">Язык:</string>
+    <string name="yearPreview">Год:</string>
+    <string name="pagesPreview">Страниц:</string>
+    <string name="authorPreview">Автор:</string>
+    <string name="descriptionPreview">Описание книги:</string>
+ <!--   <string name="authorPreview">Автор:</string>
+    <string name="authorPreview">Автор:</string>
+    <string name="authorPreview">Автор:</string>
+    <string name="authorPreview">Автор:</string>-->
+</resources>
