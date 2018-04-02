@@ -12,4 +12,12 @@
     <string name="textOfNews">Текст новости: </string>
  <!--   <string name="authorPreview">Автор:</string>
     <string name="authorPreview">Автор:</string>-->
+
+    <!-- Studied  -->
+    <string name="one">One</string>
+    <string name="two">Two</string>
+    <string name="three">Three</string>
+    <string name="four">Four</string>
+    <string name="five">Five</string>
+
 </resources>
