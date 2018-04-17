@@ -33,7 +33,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/titlePreview"
+                    android:id="@+id/titleBook"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="1dp"
@@ -50,7 +50,7 @@
                     android:paddingTop="5dp" />
 
                 <TextView
-                    android:id="@+id/authorPreview"
+                    android:id="@+id/authorBook"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="1dp"
@@ -59,15 +59,7 @@
                     android:text="@string/authorPreview" />
 
                 <TextView
-                    android:id="@+id/seriesPreview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="1dp"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="5dp"
-                    android:text="@string/seriesPreview" />
-
-                <TextView
+                    android:id="@+id/genreBook"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="1dp"
@@ -76,7 +68,16 @@
                     android:text="@string/genrePreview" />
 
                 <TextView
-                    android:id="@+id/languagePreview"
+                    android:id="@+id/seriesBook"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="1dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/seriesPreview" />
+
+                <TextView
+                    android:id="@+id/languageBook"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="1dp"
@@ -85,13 +86,23 @@
                     android:text="@string/languagePreview" />
 
                 <TextView
-                    android:id="@+id/yearPreview"
+                    android:id="@+id/yearBook"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="1dp"
                     android:paddingLeft="5dp"
                     android:paddingTop="5dp"
                     android:text="@string/yearPreview" />
+
+                <TextView
+                    android:id="@+id/pagesBook"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="1dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/pagesPreview" />
+
             </LinearLayout>
 
         </LinearLayout>

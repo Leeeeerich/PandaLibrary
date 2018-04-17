@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.ContentFrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.v7.widget.ContentFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
 
-    <LinearLayout
+    <!-- A CardView that contains a TextView -->
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_gravity="center"
+        card_view:cardCornerRadius="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -16,100 +20,118 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <FrameLayout
-                    android:layout_width="140dp"
-                    android:layout_height="180dp">
-
-                    <ImageView
-                        android:id="@+id/coverBook"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </FrameLayout>
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/titlePreview"
+                    <FrameLayout
+                        android:layout_width="140dp"
+                        android:layout_height="180dp">
+
+                        <ImageView
+                            android:id="@+id/coverBook"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </FrameLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="1dp"
-                        android:paddingLeft="5dp"
-                        android:paddingTop="5dp"
-                        android:text="@string/titlePreview"
-                        android:textAlignment="center" />
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="1dp"
-                        android:paddingLeft="5dp"
-                        android:paddingTop="5dp" />
+                        <TextView
+                            android:id="@+id/titleBook"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="1dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="5dp"
+                            android:text="@string/titlePreview"
+                            android:textAlignment="center" />
 
-                    <TextView
-                        android:id="@+id/authorPreview"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="1dp"
-                        android:paddingLeft="5dp"
-                        android:paddingTop="5dp"
-                        android:text="@string/authorPreview" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="1dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="5dp" />
 
-                    <TextView
-                        android:id="@+id/seriesPreview"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="1dp"
-                        android:paddingLeft="5dp"
-                        android:paddingTop="5dp"
-                        android:text="@string/seriesPreview" />
+                        <TextView
+                            android:id="@+id/authorBook"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="1dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="5dp"
+                            android:text="@string/authorPreview" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="1dp"
-                        android:paddingLeft="5dp"
-                        android:paddingTop="5dp"
-                        android:text="@string/genrePreview" />
+                        <TextView
+                            android:id="@+id/genreBook"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="1dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="5dp"
+                            android:text="@string/genrePreview" />
 
-                    <TextView
-                        android:id="@+id/languagePreview"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="1dp"
-                        android:paddingLeft="5dp"
-                        android:paddingTop="5dp"
-                        android:text="@string/languagePreview" />
+                        <TextView
+                            android:id="@+id/seriesBook"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="1dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="5dp"
+                            android:text="@string/seriesPreview" />
 
-                    <TextView
-                        android:id="@+id/yearPreview"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="1dp"
-                        android:paddingLeft="5dp"
-                        android:paddingTop="5dp"
-                        android:text="@string/yearPreview" />
+                        <TextView
+                            android:id="@+id/languageBook"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="1dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="5dp"
+                            android:text="@string/languagePreview" />
+
+                        <TextView
+                            android:id="@+id/yearBook"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="1dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="5dp"
+                            android:text="@string/yearPreview" />
+
+                        <TextView
+                            android:id="@+id/pagesBook"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="1dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="5dp"
+                            android:text="@string/pagesPreview" />
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/descriptionBook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:minLines="1"
+                android:paddingBottom="1dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/descriptionPreview" />
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/descriptionPreview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="3"
-            android:minLines="1"
-            android:paddingBottom="1dp"
-            android:paddingLeft="5dp"
-            android:paddingTop="5dp"
-            android:text="@string/descriptionPreview" />
-
-    </LinearLayout>
+    </android.support.v7.widget.CardView>
 
 </android.support.v7.widget.ContentFrameLayout>
