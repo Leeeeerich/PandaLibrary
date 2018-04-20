@@ -1,22 +1,33 @@
-package com.betelgeze.lerich.pandalibrary.view.my_library_activity;
+package com.betelgeze.lerich.pandalibrary.view.news_activity;
 
 
 
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.util.Log;
 
 import com.betelgeze.lerich.pandalibrary.Constants;
-import com.betelgeze.lerich.pandalibrary.model.Book;
+import com.betelgeze.lerich.pandalibrary.model.News;
 import com.betelgeze.lerich.pandalibrary.view.BaseFragment;
+import com.betelgeze.lerich.pandalibrary.view.NewsListAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class MyReadingFrag extends BaseFragment {
+public class ReviewsFrag extends BaseFragment {
 
-    public MyReadingFrag () {
+    public List<News> newsList = new ArrayList<>();
+
+    public ReviewsFrag() {
+
         tekst();
     }
+
+    @Override
+    public void setAdapter() {
+        Adapter = new NewsListAdapter(getActivity(), newsList);
+    }
+
+
 
 
     public void tekst() {
@@ -29,22 +40,19 @@ public class MyReadingFrag extends BaseFragment {
         for (int i = 0; i <= 10; i++) {
 
 
-            Book book = new Book(
+            News news = new News(
                     "Заголовок " + i,
+                    "Дата опубликования новости " + i,
                     "Ссылка " + i,
+                    "Автор Новости " + i,
                     "Автор " + i,
-                    "Жанр " + i,
-                    "Серия " + i,
-                    "Год " + i,
-                    "Страниц " + i,
-                    "Язык " + i,
                     "Описание " + i,
                     image);
 
-            bookList.add(book);
+            newsList.add(news);
         }
-        Log.e("Hrre ","qwertyuio " + bookList.get(2).getAuthor());
-        setBookList(bookList);
+        //Log.e("Hrre ","qwertyuio " + bookList.get(2).getAuthor());
+        //setBookList(newsList);
         //updateList();
 
 

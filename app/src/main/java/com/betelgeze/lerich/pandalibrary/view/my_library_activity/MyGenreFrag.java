@@ -2,6 +2,7 @@ package com.betelgeze.lerich.pandalibrary.view.my_library_activity;
 
 
 
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Log;
 
@@ -17,8 +18,12 @@ public class MyGenreFrag extends BaseFragment {
 
 
     public void tekst() {
-
-        Uri image = Constants.URLIMAGES;
+        try {
+            image = BitmapFactory.decodeStream(Constants.URLIMAGES.openConnection() .getInputStream());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Log.e("Hrre ","image " + Constants.URLIMAGES);
         for (int i = 0; i <= 10; i++) {
 
 

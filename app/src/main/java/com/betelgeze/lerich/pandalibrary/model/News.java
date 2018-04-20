@@ -1,11 +1,12 @@
 package com.betelgeze.lerich.pandalibrary.model;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 
 
 public class News {
     private String title, dateNews, url, author, authorNews, description;
-    private Uri imageUri;
+    private Bitmap image;
     //private
 
     public News(){
@@ -19,14 +20,14 @@ public class News {
             String authorNews,
             String author,
             String description,
-            Uri imageUri){
+            Bitmap image){
         this.title = title;
         this.dateNews = dateNews;
         this.url = url;
         this.authorNews = authorNews;
         this.author = author;
         this.description = description;
-        this.imageUri = imageUri;
+        this.image = image;
     }
 
     public String getTitle() {
@@ -77,11 +78,11 @@ public class News {
         this.description = description;
     }
 
-    public Uri getImageUri() {
-        return imageUri;
+    public Bitmap getImage() {
+        return image;
     }
 
-    public void setImageUri(Uri imageUri) {
-        this.imageUri = imageUri;
+    public void setImage(Bitmap image) {
+        this.image = image;
     }
 }

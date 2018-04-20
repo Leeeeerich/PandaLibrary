@@ -35,6 +35,9 @@
 
     <!-- Названия некоторых фрагментов в активити: Новости -->
     <string name="news">Новости</string>
+    <string name="noveltyBooks">Новинки книг</string>
+    <string name="reviews">Рецензии</string>
+    <string name="screenVersion">Экранизации</string>
 
 
 

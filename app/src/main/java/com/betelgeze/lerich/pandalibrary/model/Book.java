@@ -1,11 +1,14 @@
 package com.betelgeze.lerich.pandalibrary.model;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
+
+import java.net.URL;
 
 
 public class Book {
     private String titleBook, urlBook, author, genre, series, year, pages, languageBook, descriptionBook;
-    private Uri imageBookUri;
+    private Bitmap imageBook;
     //private
 
     public Book(){
@@ -21,7 +24,7 @@ public class Book {
             String year, String pages,
             String languageBook,
             String descriptionBook,
-            Uri imageBookUri){
+            Bitmap imageBook){
         this.titleBook = titleBook;
         this.urlBook = urlBook;
         this.author = author;
@@ -31,7 +34,7 @@ public class Book {
         this.pages = pages;
         this.languageBook = languageBook;
         this.descriptionBook = descriptionBook;
-        this.imageBookUri = imageBookUri;
+        this.imageBook = imageBook;
     }
 
     public String getTitleBook() {
@@ -106,11 +109,11 @@ public class Book {
         this.descriptionBook = descriptionBook;
     }
 
-    public Uri getImageBookUri() {
-        return imageBookUri;
+    public Bitmap getImageBook() {
+        return imageBook;
     }
 
-    public void setImageBookUri(Uri imageBookUri) {
-        this.imageBookUri = imageBookUri;
+    public void setImageBook(Bitmap imageBook) {
+        this.imageBook = imageBook;
     }
 }

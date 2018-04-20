@@ -49,8 +49,9 @@ public class NewsActivity extends BaseActivity {
     private void setupViewPager(ViewPager viewPager) {
         NewsActivity.ViewPagerAdapter adapter = new NewsActivity.ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new NewsFrag(), resources.getString(R.string.news));
-        adapter.addFragment(new NoveltyFrag(), resources.getString(R.string.noveltyFrag));
-        adapter.addFragment(new GenreFrag(), resources.getString(R.string.genre));
+        adapter.addFragment(new NoveltyBooksFrag(), resources.getString(R.string.noveltyBooks));
+        adapter.addFragment(new ReviewsFrag(), resources.getString(R.string.reviews));
+        adapter.addFragment(new ScreenVersionFrag(), resources.getString(R.string.screenVersion));
         viewPager.setAdapter(adapter);
     }
 

@@ -2,6 +2,9 @@ package com.betelgeze.lerich.pandalibrary.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -19,19 +22,23 @@ import com.betelgeze.lerich.pandalibrary.R;
 import com.betelgeze.lerich.pandalibrary.model.Book;
 import com.betelgeze.lerich.pandalibrary.view.preview_activities.BookPreviewActivity;
 
+import java.net.URI;
+import java.net.URL;
 import java.util.List;
 
 
 public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyViewHolder> {
 
-    private Context mContext;
+    private Context context;
     private List<Book> bookList;
+
+    Bitmap mIcon_val;
 
     public String urlBook;
     public String titleBookLinkName = null;
 
-    public BookListAdapter(Context mContext, List<Book> bookList) {
-        this.mContext = mContext;
+    public BookListAdapter(Context context, List<Book> bookList) {
+        this.context = context;
         this.bookList = bookList;
     }
 
@@ -77,13 +84,18 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
         holder.pages.setText(book.getPages());
         holder.languageBook.setText(book.getLanguageBook());
         holder.descriptionBook.setText(book.getDescriptionBook());
-        holder.imageBook.setImageURI(book.getImageBookUri());
+        holder.imageBook.setImageBitmap(book.getImageBook());
 
+                //holder.imageBook.setImageURI(book.getImageBookUri());
+
+
+        holder.getAdapterPosition();
         holder.titleBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Book book = bookList.get(position);
                 holder.titleBook.setText(book.getTitleBook());
+
 
                 holder.titleBook.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -92,18 +104,18 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
                         urlBook = bookList.get(position).getUrlBook();
                         titleBookLinkName = bookList.get(position).getTitleBook();
 
-                        onPreviewActivity();
+                        Log.d("alcash", titleBookLinkName + "   " + urlBook);
 
-                        Log.d("alcash", urlBook);
+                        onPreviewActivity();
                     }
                 });
 
                 urlBook = bookList.get(position).getUrlBook();
                 titleBookLinkName = bookList.get(position).getTitleBook();
 
-                onPreviewActivity();
+                Log.e ("alcash", titleBookLinkName + "   " +  urlBook);
 
-                Log.d ("alcash", urlBook);
+               // onPreviewActivity();
             }
         });
     }
@@ -113,11 +125,11 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
 
         //if (titleBookLinkName == null)
 
-        Intent intent = new Intent(mContext, BookPreviewActivity.class);
+        Intent intent = new Intent(context, BookPreviewActivity.class);
         intent.putExtra("link_name", urlBook);
         intent.putExtra("link", titleBookLinkName);
         //intent.putIntegerArrayListExtra("link_name", );
-        mContext.startActivity(intent);
+        context.startActivity(intent);
 
 
     }

@@ -1,6 +1,8 @@
 package com.betelgeze.lerich.pandalibrary.view;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,10 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.betelgeze.lerich.pandalibrary.Constants;
 import com.betelgeze.lerich.pandalibrary.R;
 import com.betelgeze.lerich.pandalibrary.model.Book;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class BaseFragment extends Fragment {
@@ -30,6 +34,7 @@ public class BaseFragment extends Fragment {
     public RecyclerView.Adapter Adapter;
 
     public List<Book> bookList = new ArrayList<>();
+    public Bitmap image;
 
 
 
@@ -84,7 +89,12 @@ public class BaseFragment extends Fragment {
     }
 
     public List<Book> tests () {
-        Uri image = Uri.parse("www.litmir.me/data/Book/0/189000/189571/BC4_1490627500.jpg");
+        try {
+            image = BitmapFactory.decodeStream(Constants.URLIMAGES.openConnection() .getInputStream());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         for (int i = 0; i <= 10; i++) {
 
 

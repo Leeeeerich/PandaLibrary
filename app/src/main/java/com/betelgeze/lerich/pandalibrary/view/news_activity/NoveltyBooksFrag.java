@@ -1,44 +1,41 @@
 package com.betelgeze.lerich.pandalibrary.view.news_activity;
 
-
-
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.util.Log;
 
 import com.betelgeze.lerich.pandalibrary.Constants;
-import com.betelgeze.lerich.pandalibrary.model.Book;
 import com.betelgeze.lerich.pandalibrary.model.News;
 import com.betelgeze.lerich.pandalibrary.view.BaseFragment;
-import com.betelgeze.lerich.pandalibrary.view.BookListAdapter;
 import com.betelgeze.lerich.pandalibrary.view.NewsListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsFrag extends BaseFragment {
-    public List<News> newsList = new ArrayList<>();
+public class NoveltyBooksFrag extends BaseFragment
 
-    public NewsFrag() {
+    {
+        public List<News> newsList = new ArrayList<>();
+
+    public NoveltyBooksFrag() {
 
         tekst();
     }
 
-    @Override
-    public void setAdapter() {
+        @Override
+        public void setAdapter() {
         Adapter = new NewsListAdapter(getActivity(), newsList);
     }
 
 
 
 
-    public void tekst() {
+        public void tekst() {
 
-        try {
-            image = BitmapFactory.decodeStream(Constants.URLIMAGES.openConnection() .getInputStream());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            try {
+                image = BitmapFactory.decodeStream(Constants.URLIMAGES.openConnection() .getInputStream());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         for (int i = 0; i <= 10; i++) {
 
 
@@ -58,7 +55,7 @@ public class NewsFrag extends BaseFragment {
         //updateList();
 
 
-      //  return bookList;
+        //  return bookList;
     }
 
 }

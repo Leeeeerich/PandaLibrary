@@ -4,22 +4,20 @@ package com.betelgeze.lerich.pandalibrary.view.news_activity;
 
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.util.Log;
 
 import com.betelgeze.lerich.pandalibrary.Constants;
-import com.betelgeze.lerich.pandalibrary.model.Book;
 import com.betelgeze.lerich.pandalibrary.model.News;
 import com.betelgeze.lerich.pandalibrary.view.BaseFragment;
-import com.betelgeze.lerich.pandalibrary.view.BookListAdapter;
 import com.betelgeze.lerich.pandalibrary.view.NewsListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsFrag extends BaseFragment {
+public class ScreenVersionFrag extends BaseFragment {
+
     public List<News> newsList = new ArrayList<>();
 
-    public NewsFrag() {
+    public ScreenVersionFrag() {
 
         tekst();
     }

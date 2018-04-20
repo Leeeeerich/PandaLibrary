@@ -64,7 +64,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
         //holder.author.setText(news.getAuthor());
         //holder.dateNews.setText(news.getDateNews());
         holder.description.setText(news.getDescription());
-        holder.coverNews.setImageURI(news.getImageUri());
+        holder.coverNews.setImageBitmap(news.getImage());
 
         holder.title.setOnClickListener(new View.OnClickListener() {
             @Override
