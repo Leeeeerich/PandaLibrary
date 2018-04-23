@@ -1,6 +1,7 @@
 package com.betelgeze.lerich.pandalibrary.view;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +33,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
         public TextView title;
         public TextView authorNews, author, dateNews, description;
         public ImageView coverNews;
+        private CardView onClickCardView;
 
 
         public MyViewHolder(View view) {
@@ -42,8 +44,9 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
             //author = (TextView) view.findViewById(R.id.);
             //dateNews = (TextView) view.findViewById(R.id.);
             description = (TextView) view.findViewById(R.id.descriptionNews);
-
             coverNews = (ImageView) view.findViewById(R.id.coverNews);
+
+            onClickCardView = (CardView) view.findViewById(R.id.card_view);
         }
 
     }
@@ -66,7 +69,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
         holder.description.setText(news.getDescription());
         holder.coverNews.setImageBitmap(news.getImage());
 
-        holder.title.setOnClickListener(new View.OnClickListener() {
+        holder.onClickCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 News news = newsList.get(position);

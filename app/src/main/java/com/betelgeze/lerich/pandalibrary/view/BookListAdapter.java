@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -43,12 +44,13 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView titleBook;
-        public TextView author, genre, series, year, pages, languageBook, descriptionBook;
-        public ImageView imageBook;
+        private TextView titleBook;
+        private TextView author, genre, series, year, pages, languageBook, descriptionBook;
+        private ImageView imageBook;
+        private CardView onClickCardView;
 
 
-        public MyViewHolder(View view) {
+        private MyViewHolder(View view) {
             super(view);
             titleBook = (TextView) view.findViewById(R.id.titleBook);
 
@@ -61,6 +63,9 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
             descriptionBook = (TextView) view.findViewById(R.id.descriptionBook);
             //count = (TextView) view.findViewById(R.id.count);
             imageBook = (ImageView) view.findViewById(R.id.coverBook);
+
+            onClickCardView = (CardView) view.findViewById(R.id.card_view);
+
         }
 
     }
@@ -90,7 +95,8 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
 
 
         holder.getAdapterPosition();
-        holder.titleBook.setOnClickListener(new View.OnClickListener() {
+       // holder
+        holder.onClickCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Book book = bookList.get(position);

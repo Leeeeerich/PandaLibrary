@@ -3,6 +3,7 @@ package com.betelgeze.lerich.pandalibrary;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -27,6 +28,7 @@ import com.betelgeze.lerich.pandalibrary.view.news_activity.NewsActivity;
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     protected Toolbar toolbar;
+    protected NavigationView navigationView;
  /*   private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -44,24 +46,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         initNavigationBar();
 
+
+
+
+
+
     }
 
-/*
-    public BaseActivity() {
-        initNavigationBar();
-    }
-*//*
-    public void initFloatingActionButton() {
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-    }
-*/
     public void initNavigationBar() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -69,9 +60,10 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
 
     @Override
     public void onBackPressed() {
@@ -98,44 +90,41 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_search) {
+            return true;
+        } else if (id == R.id.action_settings) {
             return true;
         }
 
-        return super.onOptionsItemSelected(item);
+
+
+            return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.library) {
 
+           // if ()
+
             Intent intent = new Intent(this, LibraryActivity.class);
 
-            intent.putExtra("link_name", "qwertyui");
-
-            //intent.putIntegerArrayListExtra("link_name", );
             this.startActivity(intent);
-            // Handle the camera action
+
         } else if (id == R.id.my_library) {
 
             Intent intent = new Intent(this, MyLibraryActivity.class);
 
-            intent.putExtra("link_name", "qwertyui");
-
-            //intent.putIntegerArrayListExtra("link_name", );
             this.startActivity(intent);
 
         } else if (id == R.id.news) {
 
             Intent intent = new Intent(this, NewsActivity.class);
 
-            intent.putExtra("link_name", "qwertyui");
-
-            //intent.putIntegerArrayListExtra("link_name", );
             this.startActivity(intent);
 
         } else if (id == R.id.open_book) {
@@ -150,5 +139,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
 }
