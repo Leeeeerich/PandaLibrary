@@ -1,4 +1,4 @@
-package com.betelgeze.lerich.pandalibrary.view;
+package com.betelgeze.lerich.pandalibrary.view.preview_activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,17 +13,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.betelgeze.lerich.pandalibrary.R;
 import com.betelgeze.lerich.pandalibrary.model.Book;
-import com.betelgeze.lerich.pandalibrary.view.preview_activities.BookPreviewActivity;
-import com.betelgeze.lerich.pandalibrary.view.preview_activities.PreviewActivity;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 
-public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyViewHolder> {
+public class BookPreviewAdapter extends RecyclerView.Adapter<BookPreviewAdapter.MyViewHolder> {
 
     private Context context;
     private List<Book> bookList;
@@ -32,9 +29,8 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
 
     public String urlBook;
     public String titleBookLinkName = null;
-    public int positionItem;
 
-    public BookListAdapter(Context context, List<Book> bookList) {
+    public BookPreviewAdapter(Context context, List<Book> bookList) {
         this.context = context;
         this.bookList = bookList;
     }
@@ -48,19 +44,16 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
         private Drawable drNotReading, drReading, drNotQueue, drQueue, drNotRead, drRead, drNotInterestOFF, drNotInterestON;
 
 
-
         private MyViewHolder(View view) {
             super(view);
-
-
             titleBook = (TextView) view.findViewById(R.id.titleBook);
 
             author = (TextView) view.findViewById(R.id.authorBook);
             genre = (TextView) view.findViewById(R.id.genreBook);
             series = (TextView) view.findViewById(R.id.seriesBook);
-         /*    year = (TextView) view.findViewById(R.id.yearBook);
-           pages = (TextView) view.findViewById(R.id.pagesBook);
-            languageBook = (TextView) view.findViewById(R.id.languageBook);*/
+            year = (TextView) view.findViewById(R.id.yearBook);
+            pages = (TextView) view.findViewById(R.id.pagesBook);
+            languageBook = (TextView) view.findViewById(R.id.languageBook);
             descriptionBook = (TextView) view.findViewById(R.id.descriptionBook);
             //count = (TextView) view.findViewById(R.id.count);
             imageBook = (ImageView) view.findViewById(R.id.coverBook);
@@ -69,8 +62,6 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
             imQueue = (ImageView) view.findViewById(R.id.imQueue);
             imRead = (ImageView) view.findViewById(R.id.imRead);
             imNotInterest = (ImageView) view.findViewById(R.id.imNotInterest);
-
-            onClickCardView = (CardView) view.findViewById(R.id.card_view);
 
             onClickReading = (CardView) view.findViewById(R.id.reading);
             onClickQueue = (CardView) view.findViewById(R.id.queue);
@@ -85,6 +76,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
             drRead = view.getResources().getDrawable(R.drawable.ic_complete);
             drNotInterestOFF = view.getResources().getDrawable(R.drawable.ic_not_interest_off);
             drNotInterestON = view.getResources().getDrawable(R.drawable.ic_not_interest_on);
+
         }
 
     }
@@ -92,7 +84,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_book, parent, false);
+                .inflate(R.layout.preview_book, parent, false);
 
         return new MyViewHolder(itemView);
     }
@@ -104,16 +96,15 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
         holder.author.setText(book.getAuthor());
         holder.genre.setText(book.getGenre());
         holder.series.setText(book.getSeries());
+        holder.year.setText(book.getYear());
+        holder.pages.setText(book.getPages());
+        holder.languageBook.setText(book.getLanguageBook());
+        holder.descriptionBook.setText(book.getDescriptionBook());
 
         holder.imReading.setImageDrawable(holder.drNotReading);
         holder.imQueue.setImageDrawable(holder.drNotQueue);
         holder.imRead.setImageDrawable(holder.drNotRead);
         holder.imNotInterest.setImageDrawable(holder.drNotInterestOFF);
-
-     /*   holder.year.setText(book.getYear());
-        holder.pages.setText(book.getPages());
-        holder.languageBook.setText(book.getLanguageBook());*/
-        holder.descriptionBook.setText(book.getDescriptionBook());
 
         String imageBookURL = book.getImageBook();
 
@@ -128,7 +119,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
 
 
         holder.getAdapterPosition();
-       // holder
+       /*
         holder.onClickCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,19 +138,17 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
 
                         onPreviewActivity();
                     }
-                });*/
+                });*//*
 
                 urlBook = bookList.get(position).getUrlBook();
                 titleBookLinkName = bookList.get(position).getTitleBook();
-                positionItem = position;
 
                 Log.e ("alcash", titleBookLinkName + "   " +  urlBook);
 
                 onPreviewActivity();
             }
         });
-
-
+*/
         holder.onClickReading.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -230,16 +219,15 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
 
     public void onPreviewActivity() {
 
+        //if (titleBookLinkName == null)
 
         Intent intent = new Intent(context, BookPreviewActivity.class);
-
-        intent.putExtra("link_name", titleBookLinkName);
-        intent.putExtra("link", urlBook);
-        intent.putExtra("position", positionItem);
-
-
+        intent.putExtra("link_name", urlBook);
+        intent.putExtra("link", titleBookLinkName);
+        //intent.putIntegerArrayListExtra("link_name", );
         Log.e("Hren6","qwertyuio " + context);
         context.startActivity(intent);
+
 
     }
 /*
@@ -281,5 +269,3 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
         return bookList.size();
     }
 }
-
-

@@ -21,22 +21,18 @@ public class ScreenVersionFrag extends BaseFragment {
 
         tekst();
     }
-
+/*
     @Override
     public void setAdapter() {
-        Adapter = new NewsListAdapter(getActivity(), newsList);
+        adapter = new NewsListAdapter(getActivity(), newsList);
     }
-
+*/
 
 
 
     public void tekst() {
 
-        try {
-            image = BitmapFactory.decodeStream(Constants.URLIMAGES.openConnection() .getInputStream());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        image = Constants.URLIMAGES;
         for (int i = 0; i <= 10; i++) {
 
 

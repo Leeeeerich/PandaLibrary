@@ -8,7 +8,7 @@ import java.net.URL;
 
 public class Book {
     private String titleBook, urlBook, author, genre, series, year, pages, languageBook, descriptionBook;
-    private Bitmap imageBook;
+    private String imageBook;
     //private
 
     public Book(){
@@ -21,10 +21,11 @@ public class Book {
             String author,
             String genre,
             String series,
-            String year, String pages,
+            String year,
+            String pages,
             String languageBook,
             String descriptionBook,
-            Bitmap imageBook){
+            String imageBook){
         this.titleBook = titleBook;
         this.urlBook = urlBook;
         this.author = author;
@@ -109,11 +110,11 @@ public class Book {
         this.descriptionBook = descriptionBook;
     }
 
-    public Bitmap getImageBook() {
+    public String getImageBook() {
         return imageBook;
     }
 
-    public void setImageBook(Bitmap imageBook) {
+    public void setImageBook(String imageBook) {
         this.imageBook = imageBook;
     }
 }

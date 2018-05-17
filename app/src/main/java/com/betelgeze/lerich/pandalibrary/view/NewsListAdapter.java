@@ -1,6 +1,7 @@
 package com.betelgeze.lerich.pandalibrary.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,19 +14,22 @@ import android.widget.TextView;
 import com.betelgeze.lerich.pandalibrary.R;
 import com.betelgeze.lerich.pandalibrary.model.Book;
 import com.betelgeze.lerich.pandalibrary.model.News;
+import com.betelgeze.lerich.pandalibrary.view.preview_activities.NewsPreviewActivity;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 
 public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyViewHolder> {
 
-    private Context mContext;
+    private Context context;
     private List<News> newsList;
 
     public String urlNews;
+    public String titleNewsLinkName = null;
 
-    public NewsListAdapter(Context mContext, List<News> newsList) {
-        this.mContext = mContext;
+    public NewsListAdapter(Context context, List<News> newsList) {
+        this.context = context;
         this.newsList = newsList;
     }
 
@@ -34,6 +38,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
         public TextView authorNews, author, dateNews, description;
         public ImageView coverNews;
         private CardView onClickCardView;
+
 
 
         public MyViewHolder(View view) {
@@ -67,14 +72,22 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
         //holder.author.setText(news.getAuthor());
         //holder.dateNews.setText(news.getDateNews());
         holder.description.setText(news.getDescription());
-        holder.coverNews.setImageBitmap(news.getImage());
+
+        String imageBookURL = news.getImage();
+
+        Glide
+                .with(context)
+                .load(imageBookURL)
+                .into(holder.coverNews);
+
+        //holder.coverNews.setImageBitmap(news.getImage());
 
         holder.onClickCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 News news = newsList.get(position);
-                holder.title.setText(news.getTitle());
-
+               // holder.title.setText(news.getTitle());
+/*
                 holder.title.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -86,8 +99,9 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
                         Log.d("alcash", urlNews);
                     }
                 });
-
+*/
                 urlNews = newsList.get(position).getUrl();
+                titleNewsLinkName = newsList.get(position).getTitle();
 
                 onPreviewActivity();
 
@@ -98,13 +112,15 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyView
 
 
     public void onPreviewActivity() {
-/*
-        Intent intent = new Intent(mContext, PreviewActivity.class);
-        intent.putExtra("link_name", urlBook);
-        //intent.putIntegerArrayListExtra("link_name", );
-        mContext.startActivity(intent);
 
-*/
+        Intent intent = new Intent(context, NewsPreviewActivity.class);
+
+        intent.putExtra("link_name", titleNewsLinkName);
+        intent.putExtra("link", urlNews);
+
+        context.startActivity(intent);
+
+
     }
 /*
 

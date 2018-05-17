@@ -21,11 +21,7 @@ public class MyReadingFrag extends BaseFragment {
 
     public void tekst() {
 
-        try {
-            image = BitmapFactory.decodeStream(Constants.URLIMAGES.openConnection() .getInputStream());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        image = Constants.URLIMAGES;
         for (int i = 0; i <= 10; i++) {
 
 

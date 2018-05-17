@@ -43,7 +43,6 @@ public class MyLibraryActivity extends BaseActivity {
         tabLayout.setupWithViewPager(viewPager);
 
 
-
     }
 
     private void setupViewPager(ViewPager viewPager) {

@@ -19,6 +19,8 @@ import android.text.Layout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.betelgeze.lerich.pandalibrary.view.library_activity.LibraryActivity;
 import com.betelgeze.lerich.pandalibrary.view.my_library_activity.MyLibraryActivity;
@@ -39,19 +41,24 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity);
 
+
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appBarLayout);
         toolbar = appBarLayout.findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);   //???????????????????????????????????????
 
+
+
+
         initNavigationBar();
 
 
-
-
+        //overridePendingTransition(int enterAnim, int exitAnim);
 
 
     }
+
+
 
     public void initNavigationBar() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -110,6 +117,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.library) {
 
            // if ()
+
 
             Intent intent = new Intent(this, LibraryActivity.class);
 

@@ -6,7 +6,7 @@ import android.net.Uri;
 
 public class News {
     private String title, dateNews, url, author, authorNews, description;
-    private Bitmap image;
+    private String image;
     //private
 
     public News(){
@@ -20,7 +20,7 @@ public class News {
             String authorNews,
             String author,
             String description,
-            Bitmap image){
+            String image){
         this.title = title;
         this.dateNews = dateNews;
         this.url = url;
@@ -78,11 +78,11 @@ public class News {
         this.description = description;
     }
 
-    public Bitmap getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Bitmap image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }
