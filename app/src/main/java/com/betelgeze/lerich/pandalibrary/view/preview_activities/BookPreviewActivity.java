@@ -1,5 +1,6 @@
 package com.betelgeze.lerich.pandalibrary.view.preview_activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.util.Log;
 import com.betelgeze.lerich.pandalibrary.BaseActivity;
 import com.betelgeze.lerich.pandalibrary.R;
 import com.betelgeze.lerich.pandalibrary.model.Book;
+import com.betelgeze.lerich.pandalibrary.presenter.PresenterPreviewBook;
 import com.betelgeze.lerich.pandalibrary.view.library_activity.LibraryActivity;
 import com.betelgeze.lerich.pandalibrary.view.my_library_activity.MyGenreFrag;
 import com.betelgeze.lerich.pandalibrary.view.my_library_activity.MyLibraryActivity;
@@ -25,16 +27,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BookPreviewActivity extends PreviewActivity {
+public class BookPreviewActivity extends PreviewActivity implements PresenterPreviewBook.Callback {
 
     Toolbar toolbar;
     ViewPager viewPager;
 
-    RecyclerView.Adapter adapter;
+    Context context;
+    //RecyclerView.Adapter adapter;
 
-
+    BookPreviewAdapter adapter;
 
     int position = 1;
+    PresenterPreviewBook presenterPreviewBook = new PresenterPreviewBook();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,9 @@ public class BookPreviewActivity extends PreviewActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        presenterPreviewBook.registerCallBack(this);
+
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         //setupViewPager(viewPager);
 
@@ -52,10 +59,11 @@ public class BookPreviewActivity extends PreviewActivity {
         String urlBook = intent.getStringExtra("link");
         position = intent.getIntExtra("position", 1);
 
-
+        //adapter = new BookPreviewAdapter(book);
 
         setTitle(titleBookLinkName);
 
+        presenterPreviewBook.getPreviewBook(urlBook);
         //onLibraryActivity();
 
 
@@ -87,5 +95,10 @@ public class BookPreviewActivity extends PreviewActivity {
 
         //intent.putIntegerArrayListExtra("link_name", );
         this.startActivity(intent);
+    }
+
+    @Override
+    public void callingBack(Book book) {
+
     }
 }

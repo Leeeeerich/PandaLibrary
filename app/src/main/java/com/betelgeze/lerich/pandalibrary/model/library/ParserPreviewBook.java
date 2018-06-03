@@ -77,7 +77,7 @@ public class ParserPreviewBook {
 
             //Заголовок книги
             Element titleBook = searchContainer.select("div [itemprop=\"name\"]").first();
-
+/*
             //Автор книги
             Elements authorBook = searchContainer.select("div [itemprop=\"author\"]").next();
 
@@ -92,71 +92,56 @@ public class ParserPreviewBook {
                     genresBook = genresBook + ", " + genresBookElements.get(i).text();
                 }
             }
-
+*/
             //Серия книг
             String seriesBook = "";
-            Elements seriesBookElements = genresBookElements.parents();
+            Elements seriesBookElements = searchContainer.select("td [class=\"bd_desc2\"]");
+            Elements seriesBookElements2 = seriesBookElements.
+                    select("div");
+            String seriesBookElements3;
+            String author = "";
+            String genre = "";
+            String series = "";
+            String language = "";
+            String pages = "";
+            String year = "";
+            Boolean bookOfComplete = true;
 
-            //Log.d("ParserPageZFFM", "CoverBook = " + qwer);
+            for(int i = 0; i < seriesBookElements2.size(); i++){
+                seriesBookElements3 = seriesBookElements2.get(i).text();
+                if(seriesBookElements3.contains("Автор:")) author = seriesBookElements3.substring(7);
+                if(seriesBookElements3.contains("Жанр:")) genre = seriesBookElements3.substring(6);
+                if(seriesBookElements3.contains("Серии:")) series = seriesBookElements3.substring(7);
+                if(seriesBookElements3.contains("Количество страниц:")) pages = seriesBookElements3.substring(20);
+                if(seriesBookElements3.contains("Доступен ознакомительный фрагмент")) bookOfComplete = false;
+                if(seriesBookElements3.contains("Язык книги:")) language = seriesBookElements3.substring(12);
+                if(seriesBookElements3.contains("Год печати:")) year = seriesBookElements3.substring(12);
 
+            }
 
-           /*
-            Log.d("ParserPageZFFM", "2.1 " + searchContainer);
-            Elements itemBookElements = searchContainer.select("div [class=\"island\"]");
-            Log.d("ParserPageZFFM", "2.2 " + itemBookElements);
-            int numItemTrackElements = searchContainer.select("div [class=\"island\"]").size();
-            Log.d("ParserPageZFFM", "num = " + numItemTrackElements);
-            for (int i = 0; i < numItemTrackElements; i++) {
-                Log.d("ParserPageZFFM", "i = " + i);
-
-                Element itemBookElement = itemBookElements.get(i);
-                //Log.d("ParserPageZFFM", "preCoverBookContainer = " + preCoverBookContainer);
-
-                Element titleBook = itemBookElements.select("div [class=\"book_name\"]").get(i);
-
-                Element coverBookContainer = itemBookElement.select("img").first();
-                String coverBook = coverBookContainer.attr("data-src");
-/*
-                Element authorBook = itemBookElements.select("div [class=\"book_name\"]").get(i);
-                Log.d("ParserPageZFFM", "titleBook = " + titleBook.text());
-*/
-/*
-                Element authorGenreSeriesComplateBookContainer = itemBookElements.select("div [class=\"desc_container\"]").get(i);
-                Log.d("ParserPageZFFM", "authorGenreSeriesComplateBookContainer = " + authorGenreSeriesComplateBookContainer);
-
-                Element authorBook = authorGenreSeriesComplateBookContainer.select("div [class=\"desc_box\"]").get(0);
-                Log.d("ParserPageZFFM", "authorBook = " + authorBook.text());
-
-                Element genre = authorGenreSeriesComplateBookContainer.select("div [class=\"desc_box\"]").get(1);
-                Log.d("ParserPageZFFM", "genre = " + genre.text());
-
-                Element series = authorGenreSeriesComplateBookContainer.select("div [class=\"desc_box\"]").get(2);
-                Log.d("ParserPageZFFM", "series = " + series.text());
-
-                Element description = itemBookElement.select("div [itemprop=\"description\"]").first();
-                Log.d("ParserPageZFFM", "description = " + description.text());
+            Elements description = searchContainer.select("div [jq=\"BookAnnotationText\"]");
+            Log.d("ParserPageZFFM", "Pizdato = " + author + " " + genre + " " + series + " " + pages + " " + bookOfComplete + " " + language + " " + year);
+            Log.d("ParserPageZFFM", "NumCoverBook = " + seriesBookElements.size());
+            Log.d("ParserPageZFFM", "CoverBook = " + description.text());
 
 
-*//*
-                // Log.d("ParserPageZFFM", "3 = " + titleBookAndCoverContainer.text());
+
                 Book book = new Book(
                         titleBook.text(),
                         "",
-                        authorBook.text(),
-                        genresBook.text(),
-                        series.text(),
-                        "",
-                        "",
-                        "",
+                        author,
+                        genre,
+                        series,
+                        year,
+                        pages,
+                        language,
                         description.text(),
                         baseURL + coverBook
                 );
 
 
-                //Log.d("ParserPageZFFM", "10 " + popSongs.getTrackArtist());
-                bookList.add(book);
-            }
-            */
+
+
         }  catch (Exception e) {
             e.printStackTrace();
         }
