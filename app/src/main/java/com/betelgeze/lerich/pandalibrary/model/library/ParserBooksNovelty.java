@@ -86,6 +86,10 @@ public class ParserBooksNovelty {
 
                 Element titleBook = itemBookElements.select("div [class=\"book_name\"]").get(i);
 
+                String urlBook = titleBook.select("a").attr("abs:href");
+                Log.d("ParserPageZFFM", "preUrlBook = " + titleBook);
+                Log.d("ParserPageZFFM", "urlBook = " + urlBook);
+
                 Element coverBookContainer = itemBookElement.select("img").first();
                 String coverBook = coverBookContainer.attr("data-src");
 /*
@@ -113,7 +117,7 @@ public class ParserBooksNovelty {
                // Log.d("ParserPageZFFM", "3 = " + titleBookAndCoverContainer.text());
                 Book book = new Book(
                         titleBook.text(),
-                        "",
+                        urlBook,
                         authorBook.text(),
                         genre.text(),
                         series.text(),

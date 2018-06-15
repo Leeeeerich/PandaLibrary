@@ -63,7 +63,7 @@ public class PresenterLibraryNoveltyFrag {
 
 
                 callback.callingBack(bookList);
-                Log.e("Pifda", " " + bookList.get(3).getTitleBook());
+                Log.e("Pifda", " " + bookList.get(3).getUrlBook());
 
 
             }

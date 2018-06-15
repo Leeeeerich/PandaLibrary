@@ -71,9 +71,11 @@ public class ParserPreviewBook {
             Elements searchContainer = documentPage.select("div [class=\"right_content\"]");
             Log.d("ParserPageZFFM", "Container = " + searchContainer);
 
+
             //Адрес обложки книги
             Element coverBookContainer = documentPage.select("div [jq=\"BookCover\"]").first();
             String coverBook = coverBookContainer.absUrl("src");
+            Log.d("ParserPageZFFM", "Container = " + coverBook);
 
             //Заголовок книги
             Element titleBook = searchContainer.select("div [itemprop=\"name\"]").first();
@@ -122,11 +124,11 @@ public class ParserPreviewBook {
             Elements description = searchContainer.select("div [jq=\"BookAnnotationText\"]");
             Log.d("ParserPageZFFM", "Pizdato = " + author + " " + genre + " " + series + " " + pages + " " + bookOfComplete + " " + language + " " + year);
             Log.d("ParserPageZFFM", "NumCoverBook = " + seriesBookElements.size());
-            Log.d("ParserPageZFFM", "CoverBook = " + description.text());
+            Log.d("ParserPageZFFM", "Description = " + description.text());
 
 
 
-                Book book = new Book(
+                book = new Book(
                         titleBook.text(),
                         "",
                         author,
@@ -136,7 +138,7 @@ public class ParserPreviewBook {
                         pages,
                         language,
                         description.text(),
-                        baseURL + coverBook
+                        coverBook
                 );
 
 
@@ -145,7 +147,8 @@ public class ParserPreviewBook {
         }  catch (Exception e) {
             e.printStackTrace();
         }
-        //   Log.d("ParserPageZFFM", "11 " + objectTrackList);
+        Log.d("ParserPageZFFM", "11 ");
+        Log.d("ParserPageZFFM", "11 " + book.getTitleBook());
         return book;
     }
 

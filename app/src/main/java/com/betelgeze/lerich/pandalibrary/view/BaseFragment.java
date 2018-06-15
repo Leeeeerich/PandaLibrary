@@ -1,10 +1,12 @@
 package com.betelgeze.lerich.pandalibrary.view;
 
+import android.arch.lifecycle.ViewModelStore;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -44,10 +46,15 @@ public class BaseFragment extends Fragment {
 
     public ProgressBar progressBar;
 
+    private RelativeLayout relativeLayout;
+    public View view;
     public ViewGroup viewGroup;
+    View view1;
 
     public BaseFragment() {
         // Required empty public constructor
+
+
     }
 
     @Override
@@ -58,24 +65,20 @@ public class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment, container, false);
-        //final View view1 = inflater.inflate(R.layout.recycler_view, null);
+        view = inflater.inflate(R.layout.fragment, container, false);
+
+        initInit();
+        return view;
+    }
+
+    public void initInit() {
         context = getActivity();
 
+/*        progressBar = new ProgressBar(context);
+        progressBar = view.findViewById(R.id.progressBar);*/
         //tests();
-        Log.e("Hren6","qwertyuio " + context);
-
 
         setupAdapter(context, bookList);
-
-
-        View view1 = View.inflate(context, R.layout.progress_bar_layout, container);
-        FrameLayout frameLayout = (FrameLayout) view1.findViewById(R.id.filedProgressDownload);
-        progressBar = frameLayout.findViewById(R.id.progressDownload);
-
-        progressBar.setVisibility(ProgressBar.VISIBLE);
-
-
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
 
@@ -92,27 +95,31 @@ public class BaseFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
 
+
         recyclerView.addOnScrollListener(
                 new EndlessRecyclerViewScrollListener(layoutManager) {
                     @Override
                     public void onLoadMore(int page, int totalItemsCount) {
 
                         setActEndlessRVScrollListener(page, totalItemsCount);
-                      //  if (page <= numberOfPages) {
+                        //  if (page <= numberOfPages) {
 
-                            //progressBar.setVisibility(ProgressBar.VISIBLE);
-                            //listSong(keywordsSearch + Constants.ZF_FM_NEXT_PAGE + page);
-                            //Log.e(LOG_TAG, "" + page + "  " + numberOfPages);
+                        //progressBar.setVisibility(ProgressBar.VISIBLE);
+                        //listSong(keywordsSearch + Constants.ZF_FM_NEXT_PAGE + page);
+                        //Log.e(LOG_TAG, "" + page + "  " + numberOfPages);
 
-                      //  }
+                        //  }
                     }
                 }
         );
+    }
 
-       // bookListAdapter.notifyDataSetChanged();
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment, container, false);
-        return view;
+    public View getView1(){
+        return view1;
+    }
+
+    public ViewGroup getViewGroup() {
+        return viewGroup;
     }
 
     public void setProgressBar(ProgressBar progressBar) {
@@ -202,6 +209,6 @@ public class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View getView() {
-        return super.getView();
+        return view;
     }
 }

@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.ProgressBar;
 
 import com.betelgeze.lerich.pandalibrary.BaseActivity;
 import com.betelgeze.lerich.pandalibrary.R;
@@ -34,13 +35,14 @@ public class LibraryActivity extends BaseActivity {
 
         Intent intent = getIntent();
 
-       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //???????????????????????????????????????
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //???????????????????????????????????????
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
     }
 
     private void setupViewPager(ViewPager viewPager) {

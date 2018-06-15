@@ -11,10 +11,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.ProgressBar;
 
 import com.betelgeze.lerich.pandalibrary.model.Book;
 import com.betelgeze.lerich.pandalibrary.model.library.ParserBooksNovelty;
 import com.betelgeze.lerich.pandalibrary.model.library.ParserPreviewBook;
+
 import com.betelgeze.lerich.pandalibrary.view.library_activity.LibraryActivity;
 import com.betelgeze.lerich.pandalibrary.view.my_library_activity.MyLibraryActivity;
 import com.betelgeze.lerich.pandalibrary.view.my_library_activity.MyReadingFrag;
@@ -34,8 +36,8 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       // listBook("https://www.litmir.me/bd/?b=42");
-
+       //listBook("https://www.litmir.me/bd/?b=42");
+       // pKromeProgressBar = (PKromeProgressBar) findViewById(R.id.pkProgressBar);
 
 
 

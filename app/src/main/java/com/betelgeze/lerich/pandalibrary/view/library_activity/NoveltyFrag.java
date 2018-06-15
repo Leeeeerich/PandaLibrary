@@ -7,8 +7,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -23,29 +25,29 @@ import com.betelgeze.lerich.pandalibrary.view.EndlessRecyclerViewScrollListener;
 
 import java.util.List;
 
-import static android.view.View.VISIBLE;
+
 
 public class NoveltyFrag extends BaseFragment implements PresenterLibraryNoveltyFrag.Callback {
 
     private int numberPage = 1;
-
-
-
-
-
-
+    ProgressBar progressBar;
     PresenterLibraryNoveltyFrag presenterLibraryNoveltyFrag = new PresenterLibraryNoveltyFrag();
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment, container, false);
+
+        progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+        Log.e("view", "" + progressBar);
+        progressBar.setVisibility(ProgressBar.VISIBLE);
+
+        initInit();
+        return view;
+    }
 
     public NoveltyFrag() {
         presenterLibraryNoveltyFrag.registerCallBack(this);
-
-
-
-
-
-       // getProgressBar().setVisibility(VISIBLE);
-
-      //  progressBar.setVisibility(ProgressBar.VISIBLE);
 
         presenterLibraryNoveltyFrag.getListBook(Constants.URL_NOVELTY_LITMIR + numberPage);
 
@@ -54,11 +56,12 @@ public class NoveltyFrag extends BaseFragment implements PresenterLibraryNovelty
         //tekst();
     }
 
+
     @Override
     public void setActEndlessRVScrollListener(int page, int numberOfPages) {
         super.setActEndlessRVScrollListener(page, numberOfPages);
         numberPage++;
-
+        progressBar.setVisibility(ProgressBar.VISIBLE);
         presenterLibraryNoveltyFrag.getListBook(Constants.URL_NOVELTY_LITMIR + numberPage);
     }
 
@@ -95,6 +98,8 @@ public class NoveltyFrag extends BaseFragment implements PresenterLibraryNovelty
     public void callingBack(List<Book> bookList) {
 
         setupAdapter(context, bookList);
+
+        //progressBar.setVisibility(ProgressBar.INVISIBLE);
         //this.bookList = bookList;
         //Log.e("Hrre ","qwertyuio " + bookList.get(2).getAuthor());
 
